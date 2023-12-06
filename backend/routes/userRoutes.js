@@ -45,14 +45,53 @@ router.get("/view/:id", async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(id);
 
-    if (!user) res.status(400).send({ message: "User not found!" });
+    if (!user) return res.status(400).send({ message: "User not found!" });
 
-    res.status(200).send({ message: "Read success!", data: user });
+    return res.status(200).send({ message: "Read success!", data: user });
   } catch (err) {
     console.log("Error getting data from DB", err);
     res
       .status(400)
       .send({ message: "Couldn't read from DB", stackTrace: err.message });
+  }
+});
+
+router.put("/edit/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, age, gender, profession } = req.body;
+
+    if (!name || !age || !gender || !profession) {
+      return res.status(400).send({ message: "All fields are required!" });
+    }
+
+    const modifiedUser = { name, age, gender, profession };
+    const user = await User.findByIdAndUpdate(id, modifiedUser);
+
+    if (!user) return res.status(400).send({ message: "User not found!" });
+
+    return res.status(200).send({ message: "Update success!" });
+  } catch (err) {
+    console.log("Error putting data to DB", err);
+    res
+      .status(400)
+      .send({ message: "Couldn't update in DB", stackTrace: err.message });
+  }
+});
+
+router.delete("/remove/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndDelete(id);
+
+    if (!user) return res.status(400).send({ message: "User not found!" });
+
+    return res.status(200).send({ message: "Delete success!" });
+  } catch (err) {
+    console.log("Error deleting data from DB", err);
+    res
+      .status(400)
+      .send({ message: "Couldn't remove from DB", stackTrace: err.message });
   }
 });
 
