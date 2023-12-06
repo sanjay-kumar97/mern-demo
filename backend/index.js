@@ -18,11 +18,10 @@ mongoose
   .connect(mongoURL)
   .then(() => {
     console.log("Mongo DB connection success!");
+    app.listen(PORT, () => {
+      console.log(`Server is running on Port ${PORT}`);
+    });
   })
   .catch(() => {
     console.log("Error connecting to Database!");
   });
-
- app.listen(PORT, () => {
-    console.log(`Server is running on Port ${PORT}`);
- });
