@@ -1,5 +1,6 @@
 const express = require("express");
-const { PORT } = require("./config");
+const mongoose = require("mongoose");
+const { PORT, mongoURL } = require("./config");
 
 const app = express();
 
@@ -9,6 +10,15 @@ app.get("/", (req, res) => {
   res.send("Hello World from Server!");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on Port ${PORT}`);
-});
+mongoose
+  .connect(mongoURL)
+  .then(() => {
+    console.log("Mongo DB connection success!");
+
+    app.listen(PORT, () => {
+      console.log(`Server is running on Port ${PORT}`);
+    });
+  })
+  .catch(() => {
+    console.log("Error connecting to Database!");
+  });
