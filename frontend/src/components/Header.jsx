@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="p-3 bg-[#1f1f1f] flex justify-between items-center text-white">
+    <header className="py-3 px-8 bg-[#1f1f1f] flex justify-between items-center text-white">
       <Image
         src={"https://sbr-technologies.com/wp-content/uploads/2021/06/mern.png"}
         width={180}
