@@ -32,11 +32,12 @@ const Home = () => {
       "flex flex-col gap-2 items-center p-3 rounded min-w-[140px] group",
     cardShadow:
       "shadow-[rgba(0,0,0,0.05)_0px_6px_24px_0px,rgba(0,0,0,0.08)_0px_0px_0px_1px]",
-    cardHover: "hover:scale-125 transition-transform duration-[400ms] delay-75",
+    cardHover:
+      "lg:hover:scale-125 lg:transition-transform lg:duration-[400ms] lg:delay-75",
     iconWrapper:
-      "translate-y-4 group-hover:translate-y-0 transition-transform duration-500",
+      "lg:translate-y-4 lg:group-hover:translate-y-0 transition-transform duration-500",
     textWrapper:
-      "scale-0 group-hover:scale-100 transition-transform delay-75 duration-500",
+      "lg:scale-0 lg:group-hover:scale-100 transition-transform delay-75 duration-500",
   };
 
   return (
