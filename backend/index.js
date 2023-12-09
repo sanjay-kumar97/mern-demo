@@ -1,12 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const apiRoutes = require("./routes/api.js");
-const { PORT, mongoURL } = require("./config");
+const { PORT, mongoURL, allowedOrigins, allowedMethods } = require("./config");
 
 const app = express();
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: allowedMethods,
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
 app.use("/api", apiRoutes);
 

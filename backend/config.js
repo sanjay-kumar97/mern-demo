@@ -7,4 +7,11 @@ const params = "retryWrites=true&w=majority";
 
 const mongoURL = `mongodb+srv://${dbUsername}:${dbPassword}@${dbName}/test?${params}`;
 
-module.exports = { PORT, mongoURL };
+const allowedOrigins = [
+  "http://localhost:3000/",
+  "https://mern-demo-frontend.vercel.app/",
+];
+
+const allowedMethods = ["POST", "GET", "PUT", "DELETE"];
+
+module.exports = { PORT, mongoURL, allowedOrigins, allowedMethods };
