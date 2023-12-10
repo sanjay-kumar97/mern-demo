@@ -26,7 +26,7 @@ const Home = () => {
   ];
 
   const styles = {
-    container: "grid place-items-center min-h-[calc(100vh-5rem)]",
+    container: "grid place-items-center min-h-main",
     wrapper: "flex justify-center flex-wrap gap-6 md:gap-10",
     cardBase:
       "flex flex-col gap-2 items-center p-3 rounded min-w-[140px] group",
